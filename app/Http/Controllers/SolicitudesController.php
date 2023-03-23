@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Pagos;
+use App\Pagos;
 
 class SolicitudesController extends Controller
 {
@@ -26,21 +26,23 @@ class SolicitudesController extends Controller
 {   
     //return $request->all();
     $pagos = new Pagos;
-    $banco_emisor = $request->banco_emisor;
-    $num_solicitud = 5;
-    $num_comprobante = $request->num_comprobante;
-    $fecha = $request->fecha;
-    $imagen_comprobante = $request->imagen_comprobante;
-    $precio = $request->precio;
+    $pagos->banco_emisor = $request->banco_emisor;
+    $pagos->num_solicitud = 5;
+    $pagos->num_comprobante = $request->num_comprobante;
+    $pagos->fecha = $request->fecha;
+    //$pagos->imagen_comprobante = $request->imagen_comprobante;
+    //$pagos->precio = $request->precio;
 
-    Pagos::create(array(
+    $pagos->save();
+
+    /*Pagos::create(array(
         'banco_emisor'=>$banco_emisor,
         'num_solicitud' => 5,
-        'num_comprobante'=>$num_comprobante ,
+        'num_comprobante'=>$num_comprobante,
         'fecha'=>$fecha,
         'imagen_comprobante'=>$imagen_comprobante,
         'precio'=>$precio,
-    ));
+    ));*/
 
     return redirect()->route('solicitudes.index');
     //return redirect()->with('mensaje', 'El registro se ha guardado exitosamente.');

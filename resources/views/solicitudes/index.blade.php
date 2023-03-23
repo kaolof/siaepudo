@@ -63,7 +63,8 @@
     </div>
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
 
-      <form method="POST" action="{{ route('solicitudes.guardar') }}" >
+      <form method="POST" action="{{ route('solicitudes.guardar') }}">
+        @csrf
         <div id="OpcionSeleccionada"></div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Banco emisor</label>
