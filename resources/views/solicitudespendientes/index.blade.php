@@ -74,7 +74,7 @@
       <th scope="col">Cedula</th>
       <th scope="col">Postgrado</th>
       <th scope="col">Solicitud</th>
-      <th scope="col">Precio</th>
+      <th scope="col">Precios</th>
       <th scope="col">Comprobante</th>
       <th scope="col">Aprobacion</th>
     </tr>
