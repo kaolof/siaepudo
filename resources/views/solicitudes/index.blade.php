@@ -106,8 +106,6 @@
       if(solicitud.value=='4'){
         precio.value = '12,8';
       }
-      
-      console.log('cambio');
     });
       
 
