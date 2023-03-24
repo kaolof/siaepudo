@@ -105,6 +105,9 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		
 		//Solicitudes pendientes
 		Route::get('/solicitudespendientes/index', 'SolicitudesPendientesController@index')->name('solicitudespendientes.index');
+
+		//GeneradorPDF
+		Route::get('/generar-pdf','SolicitudesPendientesController@generatePDF')->name('solicitudespendientes.generatePDF');;
 		
 		//CARGAR NOTAS MODULAR
         Route::get('/gestionarmaterias/index','GestionarMateriasController@index')->name('gestionarmaterias.index');
