@@ -24,8 +24,7 @@ class SolicitudesController extends Controller
 
     public function guardar(Request $request)
 {   
-    $imagePath = $request->file('imagen_comprobante')->store('public/images');
-    $imageContent = File::get(storage_path('app/' . $imagePath));
+    
 
     //return $request->all();
     $pagos = new Pagos;
@@ -33,7 +32,7 @@ class SolicitudesController extends Controller
     $pagos->banco_emisor = $request->banco_emisor;
     $pagos->num_comprobante = $request->num_comprobante;
     $pagos->fecha = $request->fecha; 
-    $pagos->imagen_comprobante =$imageContent;
+    $pagos->imagen_comprobante =$request->imagen_comprobante;
     $pagos->precio = $request->precio;
 
     $pagos->save(); 
@@ -48,7 +47,7 @@ class SolicitudesController extends Controller
     ));*/
 
     return redirect()->route('solicitudes.index');
-    //return redirect()->with('mensaje', 'El registro se ha guardado exitosamente.');
+   
 }
 
     /**
