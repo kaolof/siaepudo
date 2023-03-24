@@ -24,12 +24,12 @@ class SolicitudesController extends Controller
 
     public function guardar(Request $request)
 {   
-    //return $request->all();
-    $pagos = new Pagos;
+    return $request->all();
+    /* $pagos = new Pagos;
     $pagos->banco_emisor = $request->banco_emisor;
     $pagos->num_solicitud = 5;
     $pagos->num_comprobante = $request->num_comprobante;
-    $pagos->fecha = $request->fecha;
+    $pagos->fecha = $request->fecha; */
     //$pagos->imagen_comprobante = $request->imagen_comprobante;
     //$pagos->precio = $request->precio;
 

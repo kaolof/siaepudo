@@ -108,9 +108,6 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		
 		//CARGAR NOTAS MODULAR
         Route::get('/gestionarmaterias/index','GestionarMateriasController@index')->name('gestionarmaterias.index');
-
-		//PDF 
-		Route::get('/pdf/index', 'PdfController@generarPdf')->name('pdf.index');
 		
 		//RETORNA EL ROL DEL USUARIO
 		Route::get('/estudiante', function(){
