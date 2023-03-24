@@ -13,8 +13,10 @@ class SolicitudesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['user','administrador']);
+
         return view('solicitudes.index',
         [
             'pluck' => ['NavItemActive' => 'solicitudes'],
@@ -30,7 +32,7 @@ class SolicitudesController extends Controller
     $pagos->num_solicitud = 5;
     $pagos->num_comprobante = $request->num_comprobante;
     $pagos->fecha = $request->fecha;
-    //$pagos->imagen_comprobante = $request->imagen_comprobante;
+    $pagos->imagen_comprobante = $request->imagen_comprobante;
     //$pagos->precio = $request->precio;
 
     $pagos->save();
