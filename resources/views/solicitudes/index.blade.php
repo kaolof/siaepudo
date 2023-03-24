@@ -39,7 +39,7 @@
         <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Tipo de solicitud</h5>
         <div class="mb-4">
             <label for="solicitud">Selecciona una opción:</label>
-            <select class="form-control" id="solicitud"  name="solicitud">
+            <select class="form-control" id="num_solicitud"  name="num_solicitud">
               <option value="1">Contancia de notas</option>
               <option value="2">Constnacia de estudio</option>
               <option value="3">solvencia</option>
@@ -49,28 +49,27 @@
           <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar datos de
         pago</h5>
         <div class="mb-4">
-          <label for="exampleInputEmail1" class="form-label">Banco emisor</label>
+          <label for="banco_emisor" class="form-label">Banco emisor</label>
           <input type="text" name="banco_emisor" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
         </div>
 
         <div class="mb-4">
-          <label for="exampleInputEmail1" class="form-label">Comprobante</label>
+          <label for="num_comprobante" class="form-label">Comprobante</label>
           <input type="text" name="num_comprobante" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
         </div>
 
         <div class="mb-4">
-          <label for="exampleInputEmail1" class="form-label">Fecha realizado</label>
+          <label for="fecha" class="form-label">Fecha realizado</label>
           <input type="date" name="fecha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
 
-        <!-- <div class="mb-4">
+        <div class="mb-4">
           <label for="exampleInputEmail1" class="form-label">Captura de pago</label>
           <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-         -->
-
+        
         <div class="mb-4">
           <label for="precio" class="form-label">Precio</label>
           <input type="text" readonly="true" name="precio" class="form-control" id="precio" aria-describedby="emailHelp">
@@ -88,11 +87,11 @@
 
 <script>
     var precio= document.getElementById("precio");
-    var solicitud = document.getElementById("solicitud");
+    var solicitud = document.getElementById("num_solicitud");
     solicitud.value=='1'
     precio.value = '7,8'
 
-    document.getElementById("solicitud").addEventListener("change", function() {
+    solicitud.addEventListener("change", function() {
       
 
       if(solicitud.value=='1'){

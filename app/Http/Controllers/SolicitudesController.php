@@ -24,16 +24,19 @@ class SolicitudesController extends Controller
 
     public function guardar(Request $request)
 {   
+   /*  $request->imagen_comprobante = file_get_contents($rutaDeLaImagen);
+    $imagenCodificada = base64_encode($imagen); */
+
     return $request->all();
     /* $pagos = new Pagos;
+    $pagos->num_solicitud = $request->num_solicitud;
     $pagos->banco_emisor = $request->banco_emisor;
-    $pagos->num_solicitud = 5;
     $pagos->num_comprobante = $request->num_comprobante;
-    $pagos->fecha = $request->fecha; */
-    //$pagos->imagen_comprobante = $request->imagen_comprobante;
-    //$pagos->precio = $request->precio;
+    $pagos->fecha = $request->fecha; 
+    $pagos->imagen_comprobante = $request->imagen_comprobante;
+    $pagos->precio = $request->precio;
 
-    $pagos->save();
+    $pagos->save(); */
 
     /*Pagos::create(array(
         'banco_emisor'=>$banco_emisor,
