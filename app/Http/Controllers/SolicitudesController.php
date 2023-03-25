@@ -24,7 +24,6 @@ class SolicitudesController extends Controller
 
     public function guardar(Request $request)
 {   
-    
 
     //return $request->all();
     $pagos = new Pagos;
