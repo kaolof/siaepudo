@@ -44,4 +44,8 @@ class Persona extends Model
         return $this->hasMany(Titulo::class,'id_persona');
     }
     
+    public function solicitudespendientes()
+{
+    return $this->hasOne(solicitudespendientes::class);
+}
 }

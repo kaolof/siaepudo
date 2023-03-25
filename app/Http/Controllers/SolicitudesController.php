@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pagos;
+use App\Solicitudespendientes;
+use App\Persona;
+use App\User;
 
 class SolicitudesController extends Controller
 {
@@ -27,6 +30,7 @@ class SolicitudesController extends Controller
     public function guardar(Request $request)
 {   
     //return $request->all();
+    
     $pagos = new Pagos;
     $pagos->banco_emisor = $request->banco_emisor;
     $pagos->num_solicitud = 5;
@@ -37,14 +41,18 @@ class SolicitudesController extends Controller
 
     $pagos->save();
 
-    /*Pagos::create(array(
-        'banco_emisor'=>$banco_emisor,
-        'num_solicitud' => 5,
-        'num_comprobante'=>$num_comprobante,
-        'fecha'=>$fecha,
-        'imagen_comprobante'=>$imagen_comprobante,
-        'precio'=>$precio,
-    ));*/
+    $user = auth()->user();
+    $persona = $user->persona;
+
+    /*$user = User::find(5);
+    dd($user->persona);*/
+
+    $solicitudespendientes = new Solicitudespendientes;
+    $solicitudespendientes->nombre = $persona->nombre;
+    $solicitudespendientes->cedula = $persona->id;
+    //$solicitudespendientes->nombre = $persona->nombre;
+
+    $solicitudespendientes->save();
 
     return redirect()->route('solicitudes.index');
     //return redirect()->with('mensaje', 'El registro se ha guardado exitosamente.');
