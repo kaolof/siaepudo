@@ -77,6 +77,8 @@
             aria-describedby="emailHelp">
         </div>
 
+        <!--input type="hidden" name="id" value="{{ auth()->user()->id }}"-->
+
         <button type="submit" class="btn btn-primary">Submit</button>
 
       </form>

@@ -34,7 +34,7 @@ class ProfesorSeeder extends Seeder
 
 		//ASIGNAR ROL
 		RoleUser::create(array(
-            'role_id'=> 3, //profesor
+            'role_id'=> 2, //profesor
             'user_id'=>7, //profesorjose@gmail.com
             'is_activated'=> true,
             'is_predefined'=>true,

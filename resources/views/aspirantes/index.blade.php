@@ -6,7 +6,7 @@
     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
       <h1 class="block-title text-uppercase font-w700 pt-1 vertical-align">
         <i class="fa fa-graduation-cap fa-fw text-black-50"></i>
-        <span class="ml-2 font-size-md text-black">Solicitudes</span>
+        <span class="ml-2 font-size-md text-black">Aspirantes</span>
       </h1>
       <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-alt">
@@ -24,27 +24,33 @@
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
         <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Filtros de Búsqueda</h5>
+        <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
+          <i class="si si-refresh"></i><span class="text-uppercase ml-2">Limpiar Filtros</span>
+        </button>
     </div>
     <div class="block-content">
       <div class="row push">
         <div class="col-3">
           <div class="form-group">
-            <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Postgrados</label>
-            <br>
-<select name="Postgrado" id="Postgrado">
-  <?php
-    $Postgrados = array("Economia", "IA", "Ciencia de datos");
-
-    foreach($Postgrados as $Postgrado) {
-      echo "<option value=\"$Postgrado\">$Postgrado</option>";
-    }
-  ?>
-</select>
+            <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Nucleo</label>
+            {{
+              Form::select(
+                'id_nucleo',
+                $pluck["Nucleos"],
+                null,
+                [
+                  'class'=>'form-control custom-select text-uppercase font-size-input select-filter',
+                  'id'=>'id_nucleo',
+                  'empty'=>false,
+                  'data-column' => '2'
+                ]
+              )
+            }}
           </div>
         </div>
         <div class="col-9">
           <div class="form-group">
-            <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Estudiante</label>
+            <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Programa</label>
             {{
               Form::text(
                 'programa',
@@ -67,45 +73,34 @@
               </p>
             </div>
           </div> 
-          <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Cedula</th>
-      <th scope="col">Postgrado</th>
-      <th scope="col">Solicitud</th>
-      <th scope="col">Comprobante</th>
-      <th scope="col">Aprobacion</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Kao Lo</td>
-      <td>1234567</td>
-      <td>Economia</td>
-      <td>Contancia de notas</td>
-      <td><button>Ver solicitud</button></td>
-      <td><button>Aprobar Solicitud</button></td>
-    </tr>
-    <tr>
-      <td>Jose Mendez</td>
-      <td>12323527</td>
-      <td>IA</td>
-      <td>Contancia de inscripcion</td>
-      <td><button>Ver solicitud</button></td>
-      <td><button>Aprobar Solicitud</button></td>
-    </tr>
-    <tr>
-    <td>Andres Morocoima</td>
-      <td>123512622</td>
-      <td>Ciencia de datos</td>
-      <td>Solicitud de Fase II</td>
-      <td><button>Ver solicitud</button></td>
-      <td><button>Aprobar Solicitud</button></td>
-    </tr>
-  </tbody>
-</table>
+          <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
+            <thead>
+                <tr class="text-uppercase font-size-sm text-center">
+                    <th class="font-w700">Cedula</th>
+                    <th class="font-w700">Nombres y Apellidos</th>
+                    <th class="font-w700">Nucleo</th>
+                    <th class="font-w700">Programa</th>
+                </tr>
+            </thead>
+            <tbody class="text-uppercase tbody-font">
+                @foreach ($coleccion as $elemento)
+                <tr>
+                    <td class="text-left">
+                        {{$elemento->persona->ci}}
+                    </td>
+                    <td class="text-left">
+                      {{$elemento->persona->nombre}} {{$elemento->persona->apellido}}
+                    </td>
+                    <td class="text-left">
+                      {{$elemento->nucleoprograma->nucleo->nombre}}
+                    </td>
+                    <td class="text-left">
+                      {{$elemento->nucleoprograma->programa->nombre}}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
         </div>
       </div>      
       <!-- END Basic Elements -->

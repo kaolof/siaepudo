@@ -17,7 +17,7 @@ use App\Grado;
 use App\EstudiantePrograma; */
 
 class SolicitudesPendientesController extends Controller{
-    public function index(){
+    public function index(Request $request){
 
         
         $solicitudespendientes = App\SolicitudesPendientes::all();

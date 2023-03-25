@@ -37,7 +37,7 @@ class GestionarMateriasController extends Controller
 
     }
 
-    public function index() {
+    public function index(Request $request) {
 
          //ARMA EL ARREGLO DE ESTADOS QUE SE CARGARAN EN EL SELECT
          $Nucleos = Nucleo::select('nombre','nombre')->groupBy("nombre","nombre")->pluck('nombre','nombre')->prepend('Todos', '');
