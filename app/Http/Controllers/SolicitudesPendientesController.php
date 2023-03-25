@@ -31,6 +31,6 @@ class SolicitudesPendientesController extends Controller{
         $data = ['title' => 'Welcome to HDTuto.com'];
         $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
   
-        return  $pdf->download('itsolutionstuff.pdf');
+        return  $pdf->stream();
     }
 }

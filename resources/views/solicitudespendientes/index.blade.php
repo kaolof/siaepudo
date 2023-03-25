@@ -87,8 +87,9 @@
         <td>{{ $solicitud->postgrado }}</td>
         <td>{{ $solicitud->solicitud }}</td>
         <td>{{ $solicitud->precio }}</td>
-        <td><button>Ver comprobante</button></td>
-        <a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a>
+        <td><button class="btn btn-primary">Ver comprobante</button></td>
+        <td><a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a></td>
+        
     </tr>
     @endforeach
     
