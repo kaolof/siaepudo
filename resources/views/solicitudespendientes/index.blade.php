@@ -91,6 +91,7 @@
         <a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a>
     </tr>
     @endforeach
+    
 </tbody>
 </table>
         </div>
