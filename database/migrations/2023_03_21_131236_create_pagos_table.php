@@ -21,7 +21,7 @@ class CreatePagosTable extends Migration
             $table->string('num_comprobante');
             $table->date('fecha');
             $table->string('imagen_comprobante');
-            $table->integer('precio');
+            $table->float('precio');
             $table->timestamps();
         });
     }

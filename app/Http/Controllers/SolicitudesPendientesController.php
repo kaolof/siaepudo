@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 
 use Illuminate\Http\Request;
+use PDF;
 
 /* use DB;
 
@@ -23,5 +24,13 @@ class SolicitudesPendientesController extends Controller{
         return view('solicitudespendientes.index',compact('solicitudespendientes'),[ 'pluck' => ['NavItemActive' => 'solicitudespendientes'],]);
         
     
+    }
+
+    public function generatePDF()
+    {
+        $data = ['title' => 'Welcome to HDTuto.com'];
+        $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
+  
+        return  $pdf->stream();
     }
 }

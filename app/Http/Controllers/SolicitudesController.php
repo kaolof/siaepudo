@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App;
 use App\Pagos;
 use App\Solicitudespendientes;
 use App\Persona;
@@ -16,11 +16,12 @@ class SolicitudesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $request->user()->authorizeRoles(['user','estudiante']);
 
-        return view('solicitudes.index',
+    public function index(Request $request)
+    {   
+        $request->user()->authorizeRoles(['user','estudiante']);
+        $solicitudespendientes = App\SolicitudesPendientes::all();
+        return view('solicitudes.index',compact('solicitudespendientes'),
         [
             'pluck' => ['NavItemActive' => 'solicitudes'],
         ]
@@ -29,17 +30,18 @@ class SolicitudesController extends Controller
 
     public function guardar(Request $request)
 {   
+
     //return $request->all();
     
     $pagos = new Pagos;
+    $pagos->num_solicitud = $request->num_solicitud;
     $pagos->banco_emisor = $request->banco_emisor;
-    $pagos->num_solicitud = 5;
     $pagos->num_comprobante = $request->num_comprobante;
-    $pagos->fecha = $request->fecha;
-    $pagos->imagen_comprobante = $request->imagen_comprobante;
-    //$pagos->precio = $request->precio;
+    $pagos->fecha = $request->fecha; 
+    $pagos->imagen_comprobante =$request->imagen_comprobante;
+    $pagos->precio = $request->precio;
 
-    $pagos->save();
+    $pagos->save(); 
 
     $user = auth()->user();
     $persona = $user->persona;
@@ -55,7 +57,7 @@ class SolicitudesController extends Controller
     $solicitudespendientes->save();
 
     return redirect()->route('solicitudes.index');
-    //return redirect()->with('mensaje', 'El registro se ha guardado exitosamente.');
+   
 }
 
     /**
