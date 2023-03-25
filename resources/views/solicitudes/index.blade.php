@@ -28,26 +28,26 @@
 
   <!-- Elements -->
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
-    <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
-      
-    </div>
+
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
 
       <form method="POST" action="{{ route('solicitudes.guardar') }}">
         @csrf
         <!-- <div id="OpcionSeleccionada"></div> -->
-        <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Tipo de solicitud</h5>
+        <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Tipo de solicitud
+        </h5>
         <div class="mb-4">
-            <label for="solicitud">Selecciona una opción:</label>
-            <select class="form-control" id="num_solicitud"  name="num_solicitud">
-              <option value="1">Contancia de notas</option>
-              <option value="2">Constnacia de estudio</option>
-              <option value="3">solvencia</option>
-              <option value="4">Record</option>
-            </select>
-          </div>
-          <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar datos de
-        pago</h5>
+          <label for="solicitud">Selecciona una opción:</label>
+          <select class="form-control" id="num_solicitud" name="num_solicitud">
+            <option value="1">Contancia de notas</option>
+            <option value="2">Constnacia de estudio</option>
+            <option value="3">solvencia</option>
+            <option value="4">Record</option>
+          </select>
+        </div>
+        <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar datos
+          de
+          pago</h5>
         <div class="mb-4">
           <label for="banco_emisor" class="form-label">Banco emisor</label>
           <input type="text" name="banco_emisor" class="form-control" id="exampleInputEmail1"
@@ -67,26 +67,61 @@
 
         <div class="mb-4">
           <label for="exampleInputEmail1" class="form-label">Captura de pago</label>
-          <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
         </div>
-        
+
         <div class="mb-4">
           <label for="precio" class="form-label">Precio</label>
-          <input type="text" readonly="true" name="precio" class="form-control" id="precio" aria-describedby="emailHelp">
+          <input type="text" readonly="true" name="precio" class="form-control" id="precio"
+            aria-describedby="emailHelp">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
 
       </form>
     </div>
-  </div>
+
+    
 </div>
 
+  <!-- Elements -->
+  <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
+
+      <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">historial de
+        solicitudes</h5>
+      <button id="toggle-table">Mostrar tabla</button>
+
+      <table id="mi-tabla" style="display: none;">
+        <thead>
+          <tr>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+            <th>Columna 3</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#toggle-table").click(function() {
+            $("#mi-tabla").toggle();
+        });
+    });
+</script>
 <script>
     var precio= document.getElementById("precio");
     var solicitud = document.getElementById("num_solicitud");
-    solicitud.value=='1'
-    precio.value = '7,8'
+    solicitud.value='1';
+    precio.value = '7,8';
 
     solicitud.addEventListener("change", function() {
       
