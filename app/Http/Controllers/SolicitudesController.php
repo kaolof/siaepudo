@@ -15,7 +15,7 @@ class SolicitudesController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['user','administrador']);
+        $request->user()->authorizeRoles(['user','estudiante']);
 
         return view('solicitudes.index',
         [

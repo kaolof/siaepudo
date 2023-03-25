@@ -39,11 +39,15 @@
           <i class="fa fa-address-card"></i>
           <span>Mis Datos Personales</span></a>
       </li>
+
+      @if (Auth::user()->hasRole('estudiante'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'ofertaacademica'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('nucleoprogramas.index')}}" id="nav-link-oferta-academica">
           <i class="fa fa-graduation-cap"></i>
           <span>Oferta Académica</span></a>
       </li>
+      @endif
+
       <!--<li class="nav-item {{$pluck['NavItemActive'] == 'misprogramas'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="fa fa-graduation-cap"></i>
@@ -54,34 +58,42 @@
           <i class="fa fa-graduation-cap"></i>
           <span>Mis Asignaturas Dictadas</span></a>
       </li>-->
+      @if (Auth::user()->hasRole('estudiante'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'aspirantes'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('aspirantes.index') }}">
           <i class="fa fa-user-graduate"></i>
           <span>Aspirantes</span></a>
       </li>
+      @endif
 
+      @if (Auth::user()->hasRole('administrador'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'solicitudespendientes'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('solicitudespendientes.index') }}">
           <i class="fa fa-user-graduate"></i>
           <span>Admin Solicitudes</span></a>
       </li>
+      @endif
       <!--<li class="nav-item {{$pluck['NavItemActive'] == 'programas'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('programas.index') }}">
           <i class="fa fa-graduation-cap"></i>
           <span>Programas</span></a>
       </li>-->
 
+      @if (Auth::user()->hasRole('estudiante'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'solicitudes'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('solicitudes.index') }}">
         <i class="fa fa-file"></i>
           <span>solicitudes</span></a>
       </li>
+      @endif
 
+      @if (Auth::user()->hasRole('administrador'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'gestionarmaterias'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('gestionarmaterias.index') }}">
           <i class="fa fa-file"></i>
           <span>Gestionar materias</span></a>
       </li>
+      @endif
 
       <?php echo session()->get('Menu');?>
 
