@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Pagos;
+use App\Solicitudespendientes;
+use App\Persona;
+use App\User;
 
 class SolicitudesController extends Controller
 {
@@ -13,8 +16,10 @@ class SolicitudesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {   
+        $request->user()->authorizeRoles(['user','estudiante']);
         $solicitudespendientes = App\SolicitudesPendientes::all();
         return view('solicitudes.index',compact('solicitudespendientes'),
         [
@@ -27,6 +32,7 @@ class SolicitudesController extends Controller
 {   
 
     //return $request->all();
+    
     $pagos = new Pagos;
     $pagos->num_solicitud = $request->num_solicitud;
     $pagos->banco_emisor = $request->banco_emisor;
@@ -37,14 +43,18 @@ class SolicitudesController extends Controller
 
     $pagos->save(); 
 
-    /*Pagos::create(array(
-        'banco_emisor'=>$banco_emisor,
-        'num_solicitud' => 5,
-        'num_comprobante'=>$num_comprobante,
-        'fecha'=>$fecha,
-        'imagen_comprobante'=>$imagen_comprobante,
-        'precio'=>$precio,
-    ));*/
+    $user = auth()->user();
+    $persona = $user->persona;
+
+    /*$user = User::find(5);
+    dd($user->persona);*/
+
+    $solicitudespendientes = new Solicitudespendientes;
+    $solicitudespendientes->nombre = $persona->nombre;
+    $solicitudespendientes->cedula = $persona->id;
+    //$solicitudespendientes->nombre = $persona->nombre;
+
+    $solicitudespendientes->save();
 
     return redirect()->route('solicitudes.index');
    
