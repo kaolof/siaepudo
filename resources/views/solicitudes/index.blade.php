@@ -90,18 +90,27 @@
 
       <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">historial de
         solicitudes</h5>
-      <button id="toggle-table">Mostrar tabla</button>
+      <button id="toggle-table">Cargar historial</button>
 
       <table id="mi-tabla" style="display: none;">
         <thead>
           <tr>
-            <th>Columna 1</th>
-            <th>Columna 2</th>
-            <th>Columna 3</th>
+            <th scope="col">Solicitud</th>
+            <th scope="col">Precios</th>
+            <th scope="col">Comprobante</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>
+        @foreach ($solicitudespendientes as $solicitud)
+              <tr>
+                <td>{{ $solicitud->solicitud }}</td>
+                <td>{{ $solicitud->precio }}</td>
+                <td><button class="btn btn-primary">Ver comprobante</button></td>
+                <td>En espera</td>
 
+              </tr>
+              @endforeach
         </tbody>
       </table>
     </div>

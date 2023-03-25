@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App;
 use App\Pagos;
 
 class SolicitudesController extends Controller
@@ -14,8 +14,9 @@ class SolicitudesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('solicitudes.index',
+    {   
+        $solicitudespendientes = App\SolicitudesPendientes::all();
+        return view('solicitudes.index',compact('solicitudespendientes'),
         [
             'pluck' => ['NavItemActive' => 'solicitudes'],
         ]
