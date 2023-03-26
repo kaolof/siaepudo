@@ -107,7 +107,10 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		Route::get('/solicitudespendientes/index', 'SolicitudesPendientesController@index')->name('solicitudespendientes.index');
 
 		//GeneradorPDF
-		Route::get('/generar-pdf','SolicitudesPendientesController@generatePDF')->name('solicitudespendientes.generatePDF');;
+		Route::get('/generar-pdf','SolicitudesPendientesController@generatePDF')->name('solicitudespendientes.generatePDF');
+
+		//Boton mostrador comprobante
+		Route::get('/mostrarComprobante/{comprobante}','SolicitudesPendientesController@mostrarComprobante')->name('solicitudespendientes.mostrarComprobante');
 		
 		//CARGAR NOTAS MODULAR
         Route::get('/gestionarmaterias/index','GestionarMateriasController@index')->name('gestionarmaterias.index');

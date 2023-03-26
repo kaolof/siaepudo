@@ -19,7 +19,8 @@ class CreateSolicitudespendientesTable extends Migration
             $table->string('postgrado');
             $table->string('solicitud');
             $table->float('precio');
-            $table->text('comprobante');
+            $table->string('num_comprobante');
+            $table->binary('imagen_comprobante');
             $table->timestamps();
         });
     }

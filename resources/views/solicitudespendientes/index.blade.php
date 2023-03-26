@@ -75,6 +75,7 @@
                 <th scope="col">Postgrado</th>
                 <th scope="col">Solicitud</th>
                 <th scope="col">Precios</th>
+                <th scope="col">Numero de Comprobante</th>
                 <th scope="col">Comprobante</th>
                 <th scope="col">Aprobacion</th>
               </tr>
@@ -87,7 +88,12 @@
                 <td>{{ $solicitud->postgrado }}</td>
                 <td>{{ $solicitud->solicitud }}</td>
                 <td>{{ $solicitud->precio }}</td>
-                <td><button class="btn btn-primary">Ver comprobante</button></td>
+                <td>{{ $solicitud->num_comprobante }}</td>
+                <?php
+                  $dato=$solicitud->num_comprobante;
+                ?>
+                <td><a href="{{ route('solicitudespendientes.mostrarComprobante', ['dato' => $dato]) }}" class="btn btn-primary" target="_blank">Ver comprobante</a></td>
+                
                 <td><a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a></td>
 
               </tr>

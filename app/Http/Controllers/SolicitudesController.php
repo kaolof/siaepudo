@@ -42,7 +42,18 @@ class SolicitudesController extends Controller
     $pagos->banco_emisor = $request->banco_emisor;
     $pagos->num_comprobante = $request->num_comprobante;
     $pagos->fecha = $request->fecha; 
-    $pagos->imagen_comprobante =$request->imagen_comprobante;
+
+    //$pagos->imagen_comprobante =$request->file('imagen_comprobante');
+    
+    if (isset($_FILES['imagen_comprobante']['name'])) {
+        $tipoArchivo = $_FILES['imagen_comprobante']['type'];
+        $nombreArchivo = $_FILES['imagen_comprobante']['name'];
+        $tamanoArchivo = $_FILES['imagen_comprobante']['size'];
+        $imagenSubida = fopen($_FILES['imagen_comprobante']['tmp_name'], 'r');
+        $binariosImagen = fread($imagenSubida, $tamanoArchivo);
+    }
+    
+    $pagos->imagen_comprobante =   $binariosImagen;
     $pagos->precio = $request->precio;
 
     $user = auth()->user();
@@ -63,8 +74,8 @@ class SolicitudesController extends Controller
 
     $solicitudespendientes->solicitud = $request->num_solicitud;
     $solicitudespendientes->precio = $request->precio;
-    $solicitudespendientes->comprobante = $request->num_comprobante;
-
+    $solicitudespendientes->num_comprobante = $request->num_comprobante;
+    $solicitudespendientes->imagen_comprobante =   $binariosImagen;
     $solicitudespendientes->postgrado = $NombrePosgrado->nombre;
    
 
