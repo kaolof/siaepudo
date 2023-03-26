@@ -25,7 +25,7 @@ use App\EstudiantePrograma; */
 class SolicitudesPendientesController extends Controller{
     public function index(Request $request){
 
-        
+        $request->user()->authorizeRoles(['user','administrador']);
         $solicitudespendientes = App\SolicitudesPendientes::all();
         return view('solicitudespendientes.index',compact('solicitudespendientes'),[ 'pluck' => ['NavItemActive' => 'solicitudespendientes'],]);
         
