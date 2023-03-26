@@ -26,6 +26,11 @@
   <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">consulte y realice sus solicitudes
   </h2>
 
+  @if (session('alerta'))
+      <div class="alert alert-success">
+          {{ session('alerta') }}
+      </div>
+  @endif
 
   <!-- Elements -->
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
@@ -80,9 +85,9 @@
 
         
 
-        <!--input type="hidden" name="id" value="{{ auth()->user()->id }}"-->
 
-        <button type="submit" name="guardar' class="btn btn-primary">Pedir solicitud</button>
+
+        <button type="submit" name="guardar" class="btn btn-primary">Pedir solicitud</button>
 
       </form>
     </div>
@@ -124,7 +129,6 @@
       </table>
 
   </div>
-
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
