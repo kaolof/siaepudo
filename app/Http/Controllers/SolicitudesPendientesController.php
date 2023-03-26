@@ -33,4 +33,6 @@ class SolicitudesPendientesController extends Controller{
   
         return  $pdf->stream();
     }
+
+ 
 }

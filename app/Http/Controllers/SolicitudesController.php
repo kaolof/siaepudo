@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Pagos;
+use App\Aspirantes;
 use App\Solicitudespendientes;
+use App\Programa;
+use App\EstudiantePrograma;
+use App\NucleoPrograma;
 use App\Persona;
 use App\User;
 
@@ -41,19 +45,31 @@ class SolicitudesController extends Controller
     $pagos->imagen_comprobante =$request->imagen_comprobante;
     $pagos->precio = $request->precio;
 
-    $pagos->save(); 
-
     $user = auth()->user();
     $persona = $user->persona;
 
-    /*$user = User::find(5);
-    dd($user->persona);*/
+    $pago= pagos::where('num_comprobante', 11234567)->first();
+    $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona", 1)->first();
+    $idNucleo = $RegistroEstudiantePrograma->id_nucleo_programa;
+    $RegistroNucleoPrograma = NucleoPrograma::where("id", $idNucleo)->first();
+    $id_programa = $RegistroNucleoPrograma->id_programa;
+    $NombrePosgrado = Programa::where('id', $id_programa)->first();
+    $RegistroNucleoPrograma = NucleoPrograma::where("id", $idNucleo)->first();
 
     $solicitudespendientes = new Solicitudespendientes;
     $solicitudespendientes->nombre = $persona->nombre;
-    $solicitudespendientes->cedula = $persona->id;
-    //$solicitudespendientes->nombre = $persona->nombre;
+    $solicitudespendientes->cedula = $persona->ci;
+    $solicitudespendientes->nombre = $persona->nombre;
 
+    $solicitudespendientes->solicitud = $request->num_solicitud;
+    $solicitudespendientes->precio = $request->precio;
+    $solicitudespendientes->comprobante = $request->num_comprobante;
+
+    $solicitudespendientes->postgrado = $NombrePosgrado->nombre;
+   
+
+
+    $pagos->save();
     $solicitudespendientes->save();
 
     return redirect()->route('solicitudes.index');

@@ -17,7 +17,7 @@ class CreatePagosTable extends Migration
             
             //$table->string('id');
             $table->string('banco_emisor');
-            $table->integer('num_solicitud');
+            $table->string('num_solicitud');
             $table->string('num_comprobante');
             $table->date('fecha');
             $table->string('imagen_comprobante');

@@ -39,10 +39,10 @@
         <div class="mb-4">
           <label for="solicitud">Selecciona una opción:</label>
           <select class="form-control" id="num_solicitud" name="num_solicitud">
-            <option value="1">Contancia de notas</option>
-            <option value="2">Constnacia de estudio</option>
-            <option value="3">solvencia</option>
-            <option value="4">Record</option>
+            <option value="Constancia de notas">Constancia de notas</option>
+            <option value="Constancia de estudio">Constancia de estudio</option>
+            <option value="Solvencia">Solvencia</option>
+            <option value="Record de Notas">Record de Notas</option>
           </select>
         </div>
         <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar datos
@@ -129,25 +129,25 @@
     });
 </script>
 <script>
-    var precio= document.getElementById("precio");
+    var precio = document.getElementById("precio");
     var solicitud = document.getElementById("num_solicitud");
-    solicitud.value='1';
-    precio.value = '7,8';
+    solicitud.value='Constancia de notas';
+    precio.value = 7.8;
 
     solicitud.addEventListener("change", function() {
       
 
-      if(solicitud.value=='1'){
-        precio.value = '7,8';
+      if(solicitud.value=='Constancia de notas'){
+        precio.value = 7.8;
       }
-      if(solicitud.value=='2'){
-        precio.value = '8,3';
+      if(solicitud.value=="Constancia de estudio"){
+        precio.value = 8.3;
       }
-      if(solicitud.value=='3'){
-        precio.value = '9,6';
+      if(solicitud.value=='Solvencia'){
+        precio.value = 9.6;
       }
-      if(solicitud.value=='4'){
-        precio.value = '12,8';
+      if(solicitud.value=='Record de Notas'){
+        precio.value = 12.8;
       }
     });
       
