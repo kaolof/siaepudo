@@ -58,7 +58,7 @@ class SolicitudesController extends Controller
 
     $user = auth()->user();
     $persona = $user->persona;
-    //$pago= pagos::where('num_comprobante', 11234567)->first();
+    
     $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona", $persona->id)->first();
     $idNucleo = $RegistroEstudiantePrograma->id_nucleo_programa;
     $RegistroNucleoPrograma = NucleoPrograma::where("id", $idNucleo)->first();
@@ -80,10 +80,14 @@ class SolicitudesController extends Controller
    
 
 
-    $pagos->save();
-    $solicitudespendientes->save();
+    if($pagos->save()==true && $solicitudespendientes->save()==true){
+        $mensaje='Solicitud enviada exitosamente!';
+    }else{
+        $mensaje='## Error solicitud no enviada ##';
+    }
+    
 
-    return redirect()->route('solicitudes.index');
+    return redirect()->route('solicitudes.index')->with('alerta', $mensaje);
    
 }
 

@@ -57,9 +57,8 @@ class SolicitudesPendientesController extends Controller{
         
         $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
        
-       // $datos_documento->delete();
-        
         return   $pdf->stream();
+        
 
     }
 

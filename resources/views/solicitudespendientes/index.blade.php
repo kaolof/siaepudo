@@ -106,7 +106,37 @@
 
           
         </div>
-      </div>      
+      </div>    
+      
+      <div class="row">
+        <button class="btn btn-primary mt-4 " id="toggle-table">Cargar historial</button>
+
+        <table class="table mt-4" id="mi-tabla" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Solicitud</th>
+              <th scope="col">Precios</th>
+              <th scope="col">Comprobante</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+                    $cont=0;
+                  ?>
+            @foreach ($solicitudespendientes as $solicitud)
+            <tr>
+              <th scope="row">{{$cont=$cont+1}}</th>
+              <td>{{ $solicitud->solicitud }}</td>
+              <td>{{ $solicitud->precio }}</td>
+              <td><button class="btn btn-primary">Ver comprobante</button></td>
+              <td>En espera</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        </div>
       <!-- END Basic Elements -->
     </div>
   </div>
