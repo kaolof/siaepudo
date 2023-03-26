@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App;
-
+use App\SolicitudesPendientes;
 use Illuminate\Http\Request;
 use PDF;
 use App\SolicitudesPendientes;
@@ -59,6 +59,25 @@ class SolicitudesPendientesController extends Controller{
         $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
   
         return  $pdf->stream();
+    }
+
+    public function mostrarComprobante($Num_Comprobante)
+    {
+        
+        $registro = SolicitudesPendientes::where('Num_Comprobante', $Num_Comprobante)->first();
+
+        if (!$registro) {
+            abort(404);
+        }
+    
+        $imageData = $registro->imagen_comprobante;
+
+
+        $pdf = PDF::loadView('solicitudespendientes.comprobante', ['image' => $imageData]);
+        return  $pdf->stream();
+
+
+       
     }
 
  
