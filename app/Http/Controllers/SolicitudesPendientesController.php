@@ -60,6 +60,7 @@ class SolicitudesPendientesController extends Controller{
        // $datos_documento->delete();
         
         return   $pdf->stream();
+
     }
 
     public function mostrarComprobante($Num_Comprobante)
