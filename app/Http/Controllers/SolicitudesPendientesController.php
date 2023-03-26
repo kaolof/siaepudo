@@ -6,7 +6,6 @@ use App;
 use App\SolicitudesPendientes;
 use Illuminate\Http\Request;
 use PDF;
-use App\SolicitudesPendientes;
 use App\Programa;
 use App\EstudiantePrograma;
 use App\NucleoPrograma;
@@ -57,6 +56,12 @@ class SolicitudesPendientesController extends Controller{
         'cedula'=>$datos_documento->cedula, 'posgrado'=>$nombrePosgrado];
 
         $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
+        
+        //$registro = SolicitudesPendientes::where('Num_Comprobante', $Num_Comprobante)->first();
+
+        $datos_documento.delete();
+
+        
   
         return  $pdf->stream();
     }
