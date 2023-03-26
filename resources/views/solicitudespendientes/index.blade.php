@@ -93,8 +93,8 @@
                   $dato=$solicitud->num_comprobante;
                 ?>
                 <td><a href="{{ route('solicitudespendientes.mostrarComprobante', ['dato' => $dato]) }}" class="btn btn-primary" target="_blank">Ver comprobante</a></td>
-                
-                <td><a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a></td>
+                <td><a href="{{ route('solicitudespendientes.generatePDF', ['dato' => $dato]) }}" class="btn btn-primary">Aprobar Solicitud</a></td>
+              
 
               </tr>
               @endforeach
