@@ -18,7 +18,7 @@ class CreateSolicitudespendientesTable extends Migration
             $table->string('cedula');
             $table->string('postgrado');
             $table->string('solicitud');
-            $table->integer('precio');
+            $table->float('precio');
             $table->text('comprobante');
             $table->timestamps();
         });
