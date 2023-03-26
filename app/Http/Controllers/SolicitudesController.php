@@ -47,9 +47,8 @@ class SolicitudesController extends Controller
 
     $user = auth()->user();
     $persona = $user->persona;
-
     //$pago= pagos::where('num_comprobante', 11234567)->first();
-    $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona", 1)->first();
+    $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona", $persona->id)->first();
     $idNucleo = $RegistroEstudiantePrograma->id_nucleo_programa;
     $RegistroNucleoPrograma = NucleoPrograma::where("id", $idNucleo)->first();
     $id_programa = $RegistroNucleoPrograma->id_programa;
@@ -60,11 +59,10 @@ class SolicitudesController extends Controller
     $solicitudespendientes->nombre = $persona->nombre;
     $solicitudespendientes->cedula = $persona->ci;
     $solicitudespendientes->nombre = $persona->nombre;
-
     $solicitudespendientes->solicitud = $request->num_solicitud;
     $solicitudespendientes->precio = $request->precio;
-    $solicitudespendientes->comprobante = $request->num_comprobante;
-
+    $solicitudespendientes->comprobante = $request->imagen_comprobante;
+    $solicitudespendientes->id_estudiante = $persona->id;
     $solicitudespendientes->postgrado = $NombrePosgrado->nombre;
    
 

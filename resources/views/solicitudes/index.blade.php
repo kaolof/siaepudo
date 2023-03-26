@@ -88,34 +88,37 @@
 </div>
 
   <!-- Elements -->
-  <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
+  <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh p-4" id="block-oferta">
 
       <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">historial de
         solicitudes</h5>
-      <button id="toggle-table">Cargar historial</button>
+      <button class="btn btn-primary mt-4 " id="toggle-table">Cargar historial</button>
 
-      <table id="mi-tabla" style="display: none;">
-        <thead>
-          <tr>
-            <th scope="col">Solicitud</th>
-            <th scope="col">Precios</th>
-            <th scope="col">Comprobante</th>
-            <th scope="col">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-        @foreach ($solicitudespendientes as $solicitud)
-              <tr>
-                <td>{{ $solicitud->solicitud }}</td>
-                <td>{{ $solicitud->precio }}</td>
-                <td><button class="btn btn-primary">Ver comprobante</button></td>
-                <td>En espera</td>
-
-              </tr>
-              @endforeach
-        </tbody>
+      <table class="table mt-4" id="mi-tabla" style="display: none;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Solicitud</th>
+          <th scope="col">Precios</th>
+          <th scope="col">Comprobante</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+            <?php
+              $cont=0;
+            ?>
+            @foreach ($solicitudespendientes as $solicitud)
+                  <tr>
+                    <th scope="row">{{$cont=$cont+1}}</th>
+                    <td>{{ $solicitud->solicitud }}</td>
+                    <td>{{ $solicitud->precio }}</td>
+                    <td><button class="btn btn-primary">Ver comprobante</button></td>
+                    <td>En espera</td>
+                  </tr>
+                  @endforeach
+            </tbody>
       </table>
-    </div>
 
   </div>
 
