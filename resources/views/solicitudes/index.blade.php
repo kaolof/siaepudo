@@ -26,12 +26,13 @@
   <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">consulte y realice sus solicitudes
   </h2>
 
+
   <!-- Elements -->
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
 
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
 
-      <form method="POST" action="{{ route('solicitudes.guardar') }}">
+      <form method="POST" action="{{ route('solicitudes.guardar') }}" enctype="multipart/form-data">
         @csrf
         <!-- <div id="OpcionSeleccionada"></div> -->
         <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Tipo de solicitud
@@ -66,8 +67,8 @@
         </div>
 
         <div class="mb-4">
-          <label for="exampleInputEmail1" class="form-label">Captura de pago</label>
-          <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1"
+          <label for="imagen_comprobante" class="form-label">Captura de pago</label>
+          <input type="file" name="imagen_comprobante" class="form-control-file" id="exampleInputEmail1"
             aria-describedby="emailHelp">
         </div>
 
@@ -77,9 +78,11 @@
             aria-describedby="emailHelp">
         </div>
 
+        
+
         <!--input type="hidden" name="id" value="{{ auth()->user()->id }}"-->
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="guardar' class="btn btn-primary">Pedir solicitud</button>
 
       </form>
     </div>
