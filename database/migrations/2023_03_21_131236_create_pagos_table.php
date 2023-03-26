@@ -20,10 +20,11 @@ class CreatePagosTable extends Migration
             $table->string('num_solicitud');
             $table->string('num_comprobante');
             $table->date('fecha');
-            $table->binary('imagen_comprobante');
             $table->float('precio');
             $table->timestamps();
         });
+        // once the table is created use a raw query to ALTER it and add the MEDIUMBLOB
+        DB::statement("ALTER TABLE pagos ADD imagen_comprobante MEDIUMBLOB");
     }
 
     /**

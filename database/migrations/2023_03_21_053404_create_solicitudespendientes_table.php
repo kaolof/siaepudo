@@ -20,10 +20,11 @@ class CreateSolicitudespendientesTable extends Migration
             $table->string('solicitud');
             $table->float('precio');
             $table->string('num_comprobante');
-            $table->binary('imagen_comprobante');
             $table->integer('id_estudiante');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE solicitudespendientes ADD imagen_comprobante MEDIUMBLOB");
+      
     }
 
     /**

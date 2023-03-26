@@ -21,6 +21,7 @@
 <div class="content mb-3">
   <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">Consulte la informacion de los aspirantes a los estudios de Postgrados disponibles</h2>
   <!-- Elements -->
+  
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
         <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Filtros de Búsqueda</h5>
@@ -43,6 +44,7 @@
           </div>
         </div>
         <div class="col-9">
+          
           <div class="form-group">
             <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Estudiante</label>
             {{
