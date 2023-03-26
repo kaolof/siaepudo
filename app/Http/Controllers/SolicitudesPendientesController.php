@@ -34,10 +34,8 @@ class SolicitudesPendientesController extends Controller{
 
     public function generatePDF($comprobante)
     {
-
         //datos de la tabla solicitudes pendientes
-        $datos_documento = SolicitudesPendientes::where("comprobante", $comprobante)->first();
-
+        $datos_documento = SolicitudesPendientes::where("Num_Comprobante", $comprobante)->first(); //Aqui esta lo que dices
         $idEstudiante=$datos_documento->id_estudiante;
         //nombre nucleo
         $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona",  $idEstudiante)->first();
@@ -56,16 +54,13 @@ class SolicitudesPendientesController extends Controller{
         $data = [ 'nombreSolicitud' =>  $datos_documento->solicitud 
         , 'nucleo'=>$nombreNucleo,'nombre'=>$datos_documento->nombre,
         'cedula'=>$datos_documento->cedula, 'posgrado'=>$nombrePosgrado];
-
+        
         $pdf = PDF::loadView('solicitudespendientes.myPDF', $data);
+       
+       // $datos_documento->delete();
         
-        //$registro = SolicitudesPendientes::where('Num_Comprobante', $Num_Comprobante)->first();
+        return   $pdf->stream();
 
-        $datos_documento.delete();
-
-        
-  
-        return  $pdf->stream();
     }
 
     public function mostrarComprobante($Num_Comprobante)
