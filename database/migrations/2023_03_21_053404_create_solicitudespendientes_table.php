@@ -21,6 +21,7 @@ class CreateSolicitudespendientesTable extends Migration
             $table->float('precio');
             $table->string('num_comprobante');
             $table->binary('imagen_comprobante');
+            $table->integer('id_estudiante');
             $table->timestamps();
         });
     }

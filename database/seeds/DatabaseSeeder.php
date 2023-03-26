@@ -826,6 +826,8 @@ class DatabaseSeeder extends Seeder
                  'id_persona'=>3,
                 ));
 
+                
+
         Model::reguard();
 
         //LLAMAR A LA CLASE EstudianteSeeder

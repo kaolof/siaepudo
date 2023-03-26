@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\RoleUser;
 use App\Persona;
+use App\EstudiantePrograma;
 
 
 class EstudianteSeeder extends Seeder
@@ -112,6 +113,20 @@ class EstudianteSeeder extends Seeder
             'id_parroquia'=>3,
             'ciudad'=>'CUMANA',
             'confirmado'=>false,
+        ));
+
+        EstudiantePrograma::create(array(
+            'id'=> 4,
+            'activo'=>true,
+            'id_nucleo_programa'=>5,
+            'id_persona'=>5,
+        ));
+
+        EstudiantePrograma::create(array(
+            'id'=> 5,
+            'activo'=>true,
+            'id_nucleo_programa'=>4,
+            'id_persona'=>6,
         ));
 
 		Model::reguard();

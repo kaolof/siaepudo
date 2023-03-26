@@ -36,7 +36,10 @@ class SolicitudesPendientesController extends Controller{
     public function generatePDF($comprobante)
     {
 
-        $idEstudiante=5;
+        //datos de la tabla solicitudes pendientes
+        $datos_documento = SolicitudesPendientes::where("comprobante", $comprobante)->first();
+
+        $idEstudiante=$datos_documento->id_estudiante;
         //nombre nucleo
         $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona",  $idEstudiante)->first();
         $idNucleo = $RegistroEstudiantePrograma->id_nucleo_programa;
@@ -49,9 +52,8 @@ class SolicitudesPendientesController extends Controller{
         $posgrado = Programa::where('id', $id_programa)->first(); 
         $nombrePosgrado=$posgrado->nombre;
 
-        //comprobante
-        $datos_documento = SolicitudesPendientes::where("comprobante", $comprobante)->first();
-        //$idNucleo = $estudiantePrograma->id_nucleo_programa;
+        
+
         $data = [ 'nombreSolicitud' =>  $datos_documento->solicitud 
         , 'nucleo'=>$nombreNucleo,'nombre'=>$datos_documento->nombre,
         'cedula'=>$datos_documento->cedula, 'posgrado'=>$nombrePosgrado];
