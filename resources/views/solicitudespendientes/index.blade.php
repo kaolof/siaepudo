@@ -87,9 +87,13 @@
                 <td>{{ $solicitud->postgrado }}</td>
                 <td>{{ $solicitud->solicitud }}</td>
                 <td>{{ $solicitud->precio }}</td>
+                <?php
+                  $dato=$solicitud->comprobante;
+                ?>
+                <!-- $comprobante=$solicitud->comprobante -->
                 <td><button class="btn btn-primary">Ver comprobante</button></td>
-                <td><a href="/generar-pdf" class="btn btn-primary">Aprobar Solicitud</a></td>
-
+                <td><a href="{{ route('solicitudespendientes.generatePDF', ['dato' => $dato]) }}" class="btn btn-primary">Aprobar Solicitud</a></td>
+              
               </tr>
               @endforeach
 

@@ -48,7 +48,7 @@ class SolicitudesController extends Controller
     $user = auth()->user();
     $persona = $user->persona;
 
-    $pago= pagos::where('num_comprobante', 11234567)->first();
+    //$pago= pagos::where('num_comprobante', 11234567)->first();
     $RegistroEstudiantePrograma = EstudiantePrograma::where("id_persona", 1)->first();
     $idNucleo = $RegistroEstudiantePrograma->id_nucleo_programa;
     $RegistroNucleoPrograma = NucleoPrograma::where("id", $idNucleo)->first();
